@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.slidercontainer{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.slideritem{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+.slideritem.slideritem::before{
+    position: absolute;
+    content: "";
+    left:0;
+    right: 0;
+    filter: grayscale(20%);
+    width: 100%;
+    height: 100%;
+    background-image: url("./img-1.jpg");
+    background-size: cover;
+    background-position: center;
+
+}
+.slideritem.slideritem:nth-child(2):before{ 
+    background-image: url("./img-2.jpg");
+}
+.slideritem.slideritem:nth-child(3):before{ 
+    background-image: url("./img-3.jpg");
+}
+.slideritem.slideritem:nth-child(4):before{ 
+    background-image: url("./img-4.jpg");
+}
+.slideritem.slideritem:nth-child(5):before{ 
+    background-image: url("./img-5.jpg");
+}
+
+.slidecontent{
+    opacity: 0;
+    color: #fff;
+    z-index: 20;
+    margin: 0 auto;
+    padding: 0 20px 10px;
+    max-width: 1400px;
+    position: relative;
+}
+.swiper-slide-active .slidecontent{
+    animation: animate_opacity 0.8s 0.6s linear forwards;
+}
+@keyframes animate_opacity {
+    100%{
+        opacity: 1;
+    }
+}
+.slidecontent > *{
+    margin-top: 15%;
+    max-width: 35%;
+}
+.slidesubtitle{
+    font-size: 1rem;
+    font-weight: normal;
+    opacity: 0;
+    transform: translateY(60%);
+}
+.slidetitle{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 5px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(60%);
+}
+.swiper-slide-active :where(.slidesubtitle,.slidetitle){
+    animation: animate_text 0.6s 0.6s linear forwards;
+}
+@keyframes animate_text {
+    100%{
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+.slidedescription{
+    margin-top: 25px;
+    line-height: 25px;
+    opacity: 0;
+    transform: translateY(60%);
+}
+.swiper-slide-active .slidedescription{
+    animation: animate_text 0.6s 1s linear forwards;
+}
+.slidebutton{
+    color: #fff;
+    opacity: 1;
+    width: 250px;
+    padding: 13px 0;
+    display: block;
+    margin-top: 45px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid #fff;
+    transition: 0.5s ease;
+}
+/* .swiper-slide-active .slidebutton{
+    animation: animate_button 0.6s 1.3s linear forwards;
+}
+@keyframes animate_button {
+    100%{
+        opacity: 1;
+        width: 250px;
+    }
+} */
+.slidebutton:hover{
+    background: #fff;
+    color: #000;
+}
+.slidercontrols{
+    position: absolute;
+    width: 100%;
+    
+    bottom: 45px;
+    z-index: 20;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.sliderpagination{
+    position: relative;
+    margin: 0 auto;
+    padding: 0 20px ;
+    max-width: 1400px;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.sliderindicator{
+    position: absolute;
+    bottom: 0;
+    border-bottom: 2px solid #fff;
+    transition: 0.4s ease-in-out;
+}
+.tab{
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+@media (max-width: 1536px) {
+    .slidecontent{
+        width: 85%;
+    }
+}
+@media (max-width: 1024px) {
+   .slidecontent
+   ,.sliderpagination{
+    width: 100%;
+   }
+        
+}
+
+.slidecontent > * {
+        width: 66%;
+}
+.slidernavigation button{
+    position:absolute;
+    color: #fff;
+    z-index: 20;
+    height: 40px;
+    width: 40px;
+    border: none;
+    cursor: pointer;
+    background: #202022;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.4s ease;
+}
+.slidernavigation button.swiper-button-disabled{
+    display: none;
+}
+
+.slidernavigation button:hover{
+    background: #323235;
+}
+
+.slidernavigation button#slideprev{
+    left: 20px;
+}
+.slidernavigation button#slidenext{
+    right: 20px;
+}
+
+
+@media(max-width: 768px){
+    .slidecontent > * {
+        width: 100%;
+    }
+}
